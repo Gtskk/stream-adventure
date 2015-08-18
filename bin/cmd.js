@@ -3,8 +3,8 @@
 var path = require('path');
 var adventure = require('adventure');
 var shop = adventure({
-    name: 'stream-adventure',
-    title: 'STREAM ADVENTURE'
+    name: 'gtskk-adventure',
+    title: 'GTSKK STREAM ADVENTURE'
 });
 
 require('../menu.json').forEach(function (name) {

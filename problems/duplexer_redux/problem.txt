@@ -1,27 +1,22 @@
-In this example, you will be given a readable stream, `counter`, as the first
-argument to your exported function:
+在该例中，你被给予一个可读流，`counter`--你的输出函数的第一个参数：
 
     module.exports = function (counter) {
         // return a duplex stream to count countries on the writable side
         // and pass through `counter` on the readable side
     };
 
-Return a duplex stream with the `counter` as the readable side. You will be
-written objects with a 2-character `country` field as input, such as these:
+返回一个duplex流，其中`counter`为可读部分。你将被写入一个`country`字段为两个字符的对象，比如:
  
     {"short":"OH","name":"Ohio","country":"US"}
     {"name":"West Lothian","country":"GB","region":"Scotland"}
     {"short":"NSW","name":"New South Wales","country":"AU"}
 
-Create an object to track the number of occurrences of each unique country code.
+创建一个对象来记录每个国家代码的出现数目。
 
-For example:
+比如：
 
-    {"US": 2, "GB": 3, "CN": 1}
+    countsObj = {"US": 2, "GB": 3, "CN": 1}
 
-Once the input ends, call `counter.setCounts()` with your counts object.
+一单输入结束，调用`counter.setCounts(countsObj)`.
 
-The `duplexer2` module will again be very handy in this example.
-
-If you use duplexer, make sure to `npm install duplexer2` in the directory where
-your solution file is located.
+在该例中使用`duplexer2`模块也很方便。

@@ -1,24 +1,19 @@
-Send an HTTP POST request to http://localhost:8099 and pipe process.stdin into
-it. Pipe the response stream to process.stdout.
+向http://localhost:8099发送一个POST请求，然后将process.stdin导入进去，
+然后将响应流导出到process.stdout。
 
-Here's an example of how to use the `request` module to send a GET request,
-piping the result to stdout:
+下面是一个如何使用`request`模块发送GET请求，并把结果导出到stdout的例子：
 
     var request = require('request');
     request('http://beep.boop:80/').pipe(process.stdout);
 
-To make a POST request, just call `request.post()` instead of `request()`:
+为了发起一个POST请求，调用`request.post()`:
 
     var request = require('request');
     var r = request.post('http://beep.boop:80/');
-    
-The `r` object that you get back from `request.post()` is a readable+writable
-stream so you can pipe a readable stream into it (`src.pipe(r)`) and you can
-pipe it to a writable stream (`r.pipe(dst)`).
 
-You can even chain both steps together: src.pipe(r).pipe(dst);
+从`request.post()`得到的`r`对象是一个可读可写流，因此你可以导入一个可
+读流(`src.pipe(r)`)，并且可以将它导出到一个个可写流(`r.pipe(dst)`)。
 
-Hint: for your code, src will be process.stdin and dst will be process.stdout.
+你甚至可以将几个步骤连到一起：src.pipe(r).pipe(dst);
 
-Make sure to `npm install request` in the directory where your solution file
-lives.
+提示：对于你的代码，src就是process.stdin，dst则是process.stdout.

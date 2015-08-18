@@ -1,6 +1,5 @@
-Write a program that exports a function that spawns a process from a `cmd`
-string and an `args` array and returns a single duplex stream joining together
-the stdin and stdout of the spawned process:
+编写一段程序，它会根据`cmd`字符串和`args`数组，返回一个将衍生进程的
+输入和输出结合在一起的单duplex流。比如:
 
     var spawn = require('child_process').spawn;
     
@@ -9,10 +8,7 @@ the stdin and stdout of the spawned process:
         // joining together the stdin and stdout here
     };
 
-There is a very handy module you can use here: duplexer2. The duplexer2 module
-exports a single function `duplexer2(writable, readable)` that joins together a
-writable stream and readable stream into a single, readable/writable duplex
-stream.
+在这里你可以使用一个非常方便的模块：duplexer2，duplexer2模块输出一个函
+数`duplexer2(writable, readable)`，该函数可以联合一个可写流和可读流，变为一个可读可写流。
 
-If you use duplexer2, make sure to `npm install duplexer2` in the directory where
-your solution file is located.
+如果你使用duplexer2，确保在你答案所在文件的目录中运行`npm install duplexer2`。

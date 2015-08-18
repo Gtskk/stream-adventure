@@ -1,9 +1,8 @@
-You will be given text on process.stdin. Buffer the text and reverse it using
-the `concat-stream` module before writing it to stdout.
+你会在process.stdin接受到一些文本，缓存这些文本，然后再写到stdout之
+前使用`concat-stream`模块翻转它们。
 
-`concat-stream` is a write stream that you can pass a callback to get the
-complete contents of a stream as a single buffer. Here's an example that uses
-concat to buffer POST content in order to JSON.parse() the submitted data:
+`concat-stream`是一个可以通过传递一个回调函数来获取一个流的所有内容
+作为单buffer的可写流，下面是用concat来缓存POST的内容的例子：
 
     var concat = require('concat-stream');
     var http = require('http');
@@ -19,8 +18,7 @@ concat to buffer POST content in order to JSON.parse() the submitted data:
     });
     server.listen(5000);
 
-In your adventure you'll only need to buffer input with `concat()` from
-process.stdin.
+现在你需要使用`concat()`从process.stdin缓存输入。
 
-Make sure to `npm install concat-stream` in the directory where your solution
-file is located.
+确保在你答案文件所在目录中使用`npm install concat-stream`安装好
+`concat-stream`。

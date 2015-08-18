@@ -1,6 +1,6 @@
 {
-  "name": "stream-adventure",
-  "version": "4.0.3",
+  "name": "gtskk-adventure",
+  "version": "0.0.1",
   "description": "an educational stream adventure",
   "bin": {
     "stream-adventure": "bin/cmd.js"
@@ -39,9 +39,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/substack/stream-adventure.git"
+    "url": "git@github.com/Gtskk/stream-adventure.git"
   },
-  "homepage": "https://github.com/substack/stream-adventure",
+  "homepage": "http://git@github.com:Gtskk/stream-adventure.git",
   "keywords": [
     "stream",
     "educational",
@@ -49,10 +49,9 @@
     "tutorial",
     "learn"
   ],
-  "author": {
-    "name": "James Halliday",
-    "email": "mail@substack.net",
-    "url": "http://substack.net"
-  },
-  "license": "MIT"
+  "author": "Gtskk <iamgtskk@gmail.com> (gtskk.github.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gtskk/stream-adventure/issues"
+  }
 }

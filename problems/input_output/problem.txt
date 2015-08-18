@@ -1,5 +1,5 @@
-Take data from `process.stdin` and pipe it to `process.stdout`.
+接收`process.stdin`的数据，然后将它导出到`process.stdout`。
 
-With `.pipe()`. `process.stdin.pipe()` to be exact.
+使用`.pipe()`. `process.stdin.pipe()` 是相当正确的.
 
-Don't overthink this.
+不要多想啦。

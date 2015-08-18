@@ -1,4 +1,4 @@
-// Here's the reference solution:
+// 下面是参考答案:
 
   var combine = require('stream-combiner');
   var through = require('through2');

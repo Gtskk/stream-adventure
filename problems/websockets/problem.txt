@@ -1,18 +1,14 @@
-In this adventure, write some browser code that uses the websocket-stream module
-to print the string "hello\n".
+在本次挑战中，使用websocket-stream模块写一些浏览器代码，用于输出
+字符串"hello\n".
 
-Your solution file will be compiled with browserify and the verify script will
-prompt you to open `http://localhost:8099` in a browser to verify your solution.
+你的答案文件将通过browserify来编译，并且验证脚本会让你在浏览器中
+打开`http://localhost:8099`，从而验证你的答案。
 
-To open a stream with websocket-stream on localhost:8099, just write:
+为了使用websocket-stream打开位于localhost:8099的流, 使用如下代码:
 
     var ws = require('websocket-stream');
     var stream = ws('ws://localhost:8099');
-   
-Then write the string "hello\n" to the stream.
 
-The readme for websocket-stream has more info if you're curious about how to
-write the server side code: https://github.com/maxogden/websocket-stream
+然后将字符串"hello\n"写到流中.
 
-Make sure to `npm install websocket-stream` in the directory where your solution
-file lives.
+你可以参考websocket-stream的readme以了解更多信息: https://github.com/maxogden/websocket-stream

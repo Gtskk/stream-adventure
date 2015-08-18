@@ -1,55 +1,52 @@
-Convert data from `process.stdin` to upper-case data on `process.stdout`
-using the `through2` module.
+使用`through2`模块将`process.stdin`的数据转换为大写，然后输出到
+`process.stdout`。
 
-To get the `through2` module you'll need to do:
+为了获得`through2`模块，运行如下命令：
 
     npm install through2
 
-A transform stream takes input data and applies an operation to the data to
-produce the output data.
+一个转换流接受输入数据，并且对数据应用一个操作，最终产生输出数据。
 
-Create a through stream with a `write` and `end` function:
+使用`write`和 `end`函数创建一个through流：
 
     var through = require('through2');
     var stream = through(write, end);
 
-The `write` function is called for every buffer of available input:
+`write`函数被输入数据的每个缓存所调用：
 
     function write (buffer, encoding, next) {
         // ...
     }
 
-and the `end` function is called when there is no more data:
+`end`函数当没有更多数据是被调用：
 
     function end () {
         // ...
     }
 
-Inside the write function, call `this.push()` to produce output data and call
-`next()` when you're ready to receive the next chunk:
+在write函数中，调用`this.push()`来产生输出数据，然后当你准备接收下
+一个数据块时调用`next()`:
 
     function write (buffer, encoding, next) {
         this.push('I got some data: ' + buffer + '\n');
         next();
     }
 
-and call `done()` to finish the output:
+调用`done()`来完成输出：
 
     function end (done) {
         done();
     }
 
-`write` and `end` are both optional.
+`write`和`end`都是可选的。
 
-If `write` is not specified, the default implementation passes the input data to
-the output unmodified.
+如果`write`没有指定，默认的执行是将数据原封不动传递出去。
 
-If `end` is not specified, the default implementation calls `this.push(null)`
-to close the output side when the input side ends.
+如果`end`没有指定，默认的执行是调用`this.push(null)`来关闭输出。
 
-Make sure to pipe `process.stdin` into your transform stream
-and pipe your transform stream into `process.stdout`, like this:
+确保将`process.stdin`导入到你的转变流，然后将转变流导出到
+`process.stdout`, 如下:
 
     process.stdin.pipe(tr).pipe(process.stdout);
 
-To convert a buffer to a string, call `buffer.toString()`.
+要将缓存转换为字符串，调用`buffer.toString()`.

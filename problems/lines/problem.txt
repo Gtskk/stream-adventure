@@ -1,21 +1,19 @@
-Instead of transforming every line as in the previous "TRANSFORM" example,
-for this challenge, convert even-numbered lines to upper-case and odd-numbered
-lines to lower-case. Consider the first line to be odd-numbered. For example
-given this input:
+不像"TRANSFORM"例子中需要变化每一行，这次挑战只需要转变偶数行的为
+大写，而奇数行的为小写。假定第一行是奇数行，比如， 给定如下输入：
 
     One
     Two
     Three
     Four
 
-Your program should output:
+你的程序应该输出:
 
     one
     TWO
     three
     FOUR
 
-You can use the `split` module to split input by newlines. For example:
+你可以使用`split`模块来根据换行符分隔输入，比如：
 
     var split = require('split');
     process.stdin
@@ -26,17 +24,13 @@ You can use the `split` module to split input by newlines. For example:
         }))
     ;
 
-`split` will buffer chunks on newlines before you get them. In the previous
-example, we will get separate events for each line even though all the data
-probably arrives on the same chunk:
+`split`会在你取到它们之前遇到换行符时缓存数据块，在之前的例子中，我
+们对于每一行会执行不同的事件，尽管所有的数据可能到达到同样的区块：
 
     $ echo -e 'one\ntwo\nthree' | node split.js
     'one'
     'two'
     'three'
 
-Your own program should use `split` in this way, but you should transform the
-input and pipe the output through to `process.stdout`.
-
-Make sure to `npm install split through2` in the directory where your solution
-file lives.
+你自己的程序应该按照同样的方式使用`split`, 但是你应该转变输入，然后
+通过管道输出到`process.stdout`。

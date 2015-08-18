@@ -1,13 +1,11 @@
-You will get a file as the first argument to your program (process.argv[2]).
+你会得到一个文件作为程序的第一个参数(process.argv[2])。
 
-Use `fs.createReadStream()` to pipe the given file to `process.stdout`.
+使用`fs.createReadStream()`通过管道将给定的文件导出到`process.stdout`.
 
-`fs.createReadStream()` takes a file as an argument and returns a readable
-stream that you can call `.pipe()` on. Here's a readable stream that pipes its
-data to `process.stderr`:
+`fs.createReadStream()`接收一个文件作为参数，返回一个可读流，这样你可
+以调用它的`.pipe()`方法。这是一个将数据导出到`process.stderr`的可读流:
 
     var fs = require('fs');
     fs.createReadStream('data.txt').pipe(process.stderr);
 
-Your program is basically the same idea, but instead of `'data.txt'`, the
-filename comes from `process.argv[2]` and you should pipe to stdout, not stderr.
+你的程序基本是差不多的思路，但是文件名来自`process.argv[2]`，并且你应该导出到stdout而不是stderr.

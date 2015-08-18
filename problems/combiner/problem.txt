@@ -1,5 +1,5 @@
-Write a module that returns a readable/writable stream using the
-`stream-combiner` module. You can use this code to start with:
+使用`stream-combiner`模块写一个返回可读可写流的模块。你可以使用下述
+代码开始：
 
     var combine = require('stream-combiner')
     
@@ -10,10 +10,10 @@ Write a module that returns a readable/writable stream using the
             // then gzip the output
         )
     }
- 
-Your stream will be written a newline-separated JSON list of science fiction
-genres and books. All the books after a `"type":"genre"` row belong in that
-genre until the next `"type":"genre"` comes along in the output.
+
+你所写的流会被写入一个包含科幻小说流派和书籍的换行符分隔的JSON列表。
+所以位于`"type":"genre"`之后下一个`"type":"genre"`之前的行都属于前一
+个流派。
 
     {"type":"genre","name":"cyberpunk"}
     {"type":"book","name":"Neuromancer"}
@@ -21,38 +21,32 @@ genre until the next `"type":"genre"` comes along in the output.
     {"type":"genre","name":"space opera"}
     {"type":"book","name":"A Deepness in the Sky"}
     {"type":"book","name":"Void"}
-    
-Your program should generate a newline-separated list of JSON lines of genres,
-each with a `"books"` array containing all the books in that genre. The input
-above would yield the output:
+
+你的程序应该输出包含流派信息的换行符分隔的JSON列表，而每个流派又是一个
+包含该流派所有书籍的数组。上述输入信息会生成以下输出：
 
     {"name":"cyberpunk","books":["Neuromancer","Snow Crash"]}
     {"name":"space opera","books":["A Deepness in the Sky","Void"]}
 
-Your stream should take this list of JSON lines and gzip it with
-`zlib.createGzip()`.
+你的流应该接收该JSON列表，然后用`zlib.createGzip()`gzip它。
 
-* HINTS *
+* 提示 *
 
-The `stream-combiner` module creates a pipeline from a list of streams,
-returning a single stream that exposes the first stream as the writable side and
-the last stream as the readable side like the `duplexer` module, but with an
-arbitrary number of streams in between. Unlike the `duplexer` module, each
-stream is piped to the next. For example:
+`stream-combiner`模块根据流列表创建一个管道线，返回一个如`duplexer`模块
+的单个的流，该流暴露第一部分为可写，最后一部分为可读。但是与`duplexer`模
+块不同的是，它可以连接任意多个流，而且每个流会导向下一个，比如：
 
     var combine = require('stream-combiner');
     var stream = combine(a, b, c, d);
-    
-will internally do `a.pipe(b).pipe(c).pipe(d)` but the `stream` returned by
-`combine()` has its writable side hooked into `a` and its readable side hooked
-into `d`.
 
-As in the previous LINES adventure, the `split` module is very handy here. You
-can put a split stream directly into the stream-combiner pipeline.
-Note that split can send empty lines too.
+相当于`a.pipe(b).pipe(c).pipe(d)`，但是被`combine()`返回的`stream`只在`a`
+是可写的，只在`d`是可读的。
 
-If you end up using `split` and `stream-combiner`, make sure to install them
-into the directory where your solution file resides by doing:
+正如之前在LINES教程中所用的, `split`模块是非常方面的. 你可以把split模块直
+接放进stream-combiner管道线.
+注意split也可以直接发送空行。
+
+如果你决定使用`split`和`stream-combiner`, 确保使用一下指令安装好它们:
 
     npm install stream-combiner split
 

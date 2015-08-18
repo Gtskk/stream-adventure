@@ -1,10 +1,9 @@
-Your program will get some html written to stdin. Convert all the inner html to
-upper-case for elements with a class name of "loud",
-and pipe all the html to stdout.
+你的程序会通过stdin传入一些html，将所有类名为"loud"的元素中的所有
+内部html转换为大写，然后将所有html导出到stdout。
 
-You can use `trumpet` and `through2` to solve this adventure.
+你可以使用`trumpet`和`through2`模块解决这个问题。
 
-With `trumpet` you can create a transform stream from a css selector:
+通过`trumpet`模块你可以根据一个css选择器创建一个转变流:
 
     var trumpet = require('trumpet');
     var fs = require('fs');
@@ -13,8 +12,5 @@ With `trumpet` you can create a transform stream from a css selector:
     
     var stream = tr.select('.beep').createStream();
 
-Now `stream` outputs all the inner html content at `'.beep'` and the data you
-write to `stream` will appear as the new inner html content.
-
-Make sure to `npm install trumpet through2` in the directory where your solution
-file lives.
+现在`stream`输出所有`'.beep'`的内部html，并且你写入到`stream`中的数据
+会作为新的内部html内容。

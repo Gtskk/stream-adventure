@@ -1,11 +1,10 @@
-In this challenge, write an http server that uses a through stream to write back
-the request stream as upper-cased response data for POST requests.
+写一个使用through流的http服务端来将POST请求的数据转变为大写，然后
+作为响应返回。
 
-Streams aren't just for text files and stdin/stdout. Did you know that http
-request and response objects from node core's `http.createServer()` handler are
-also streams?
+流不仅仅用来处理文本文件和stdin/stdout。你知道来自node核心库
+`http.createServer()`的http请求和响应对象也是流吗？
 
-For example, we can stream a file to the response object:
+比如，我们可以将一个文件导出到响应对象：
 
     var http = require('http');
     var fs = require('fs');
@@ -14,10 +13,9 @@ For example, we can stream a file to the response object:
     });
     server.listen(process.argv[2]);
 
-This is great because our server can respond immediately without buffering
-everything in memory first.
+这是极好的，因为我们的服务端可以直接响应而无需先将数据缓存到内存中。
 
-We can also stream a request to populate a file with data:
+我们也可以将文件数据导入到请求对象：
 
     var http = require('http');
     var fs = require('fs');
@@ -29,7 +27,7 @@ We can also stream a request to populate a file with data:
     });
     server.listen(process.argv[2]);
 
-You can test this post server with curl:
+你可以通过curl测试post服务端：
 
     $ node server.js 8000 &
     $ echo hack the planet | curl -d@- http://localhost:8000
@@ -37,12 +35,10 @@ You can test this post server with curl:
     $ cat post.txt
     hack the planet
 
-Your http server should listen on the port given at process.argv[2] and convert
-the POST request written to it to upper-case using the same approach as the
-TRANSFORM example.
+你的http服务端应该监听process.argv[2]给定的端口，并且参照TRANSFORM
+的例子将POST数据转换为大写。
 
-As a refresher, here's an example with the default through2 callbacks explicitly
-defined:
+下面是一个利用默认的through2回调函数的例子：
 
     var through = require('through2');
     process.stdin.pipe(through(write, end)).pipe(process.stdout);
@@ -52,8 +48,3 @@ defined:
       next();
     }
     function end (done) { done(); }
-
-Do that, but send upper-case data in your http server in response to POST data.
-
-Make sure to `npm install through2` in the directory where your solution file
-lives.

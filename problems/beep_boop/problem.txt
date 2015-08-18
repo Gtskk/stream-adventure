@@ -1,8 +1,6 @@
-Just to make sure everything is working, just write a `program.js` that outputs
-the string "beep boop" with a `console.log()`.
-
-To verify your `program.js` against the expected output, do:
+为了测试环境已经配置好，请新建一个`program.js`，然后在里面用`console.log()`打印出"beep boo"字符串。
+为了验证`program.js`的输出是否符合要求，运行：
 
   stream-adventure verify program.js
 
-for more options, run `stream-adventure help`.
+运行`stream-adventure help`查看更多选项。

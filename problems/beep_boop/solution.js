@@ -1,3 +1,3 @@
-// Here's the reference solution:
+// 下面是参考答案:
 
   console.log('beep boop');
